@@ -19,7 +19,7 @@ Status TitanDBImpl::ExtractGCStatsFromTableProperty(
     // No table property found. File may not contain blob indices.
     return Status::OK();
   }
-  return ExtractGCStatsFromTableProperty(*table_properties.get(), to_add,
+  return ExtractGCStatsFromTableProperty(table_properties, to_add,
                                          blob_file_size_diff);
 }
 
@@ -40,7 +40,7 @@ Status TitanDBImpl::ExtractGCStatsFromTableProperty(
   }
   for (const auto& blob_file_size : blob_file_sizes) {
     uint64_t file_number = blob_file_size.first;
-    int64_t diff = static_cast<int64_t>(blob_file_size.second);
+    auto diff = static_cast<int64_t>(blob_file_size.second);
     if (!to_add) {
       diff = -diff;
     }
