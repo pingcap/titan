@@ -12,3 +12,9 @@ Makefile
 .idea/
 .vscode/
 cmake-build-debug/
+
+bazel-genfiles
+bazel-out
+bazel-testlogs
+bazel-titan
+bazel-bin
